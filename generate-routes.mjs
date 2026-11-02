@@ -7,7 +7,8 @@ const services = ['road-marking', 'thermoplastic-road-marking', 'parking-lot-mar
 const industries = ['Highways & Roads', 'Commercial & Retail', 'Industrial & Manufacturing', 'Logistics & Warehousing', 'Aviation & Airports', 'Oil & Gas / Petrochemical', 'Residential & Communities', 'Healthcare & Institutional', 'Energy & Utilities', 'Retail & Showrooms'];
 const projects = ['NMDC Abu Dhabi Helipad Marking', 'Al Geemi Abu Dhabi Airport Zone Marking Works', 'Al Ryum Abu Dhabi Event Plaza Al Falah Project Marking', 'Colorspot Abu Dhabi City Marking', 'GCCLD Al Ain Marking', 'GCCLD Al Ain / Access Adds Dubai Marking', 'Access Adds Dubai Marking', 'NIGM Abu Dhabi'];
 const cities = { uae: ['Abu Dhabi','Dubai','Sharjah','Ajman','Ras Al Khaimah','Fujairah','Al Ain','Umm Al Quwain'], 'saudi-arabia': ['Riyadh','Jeddah','Dammam','Al Khobar','Jubail','Yanbu','Makkah','Madinah'] };
-const routes = ['about','contact','projects','industries','blog','services','uae','saudi-arabia','blog/thermoplastic-road-markings-uae','blog/car-park-surfacing-uae',...services.map(x=>`services/${x}`),...industries.map(x=>`industries/${slug(x)}`),...projects.map(x=>`projects/${slug(x)}`),...Object.entries(cities).flatMap(([country,list])=>list.map(x=>`${country}/${x==='Al Khobar'?'khobar':slug(x)}`))];
+const cityRoutes = Object.entries(cities).flatMap(([country,list])=>list.map(x=>`${country}/${x==='Al Khobar'?'khobar':slug(x)}`));
+const routes = ['about','contact','projects','industries','blog','services','uae','saudi-arabia','blog/thermoplastic-road-markings-uae','blog/car-park-surfacing-uae',...services.map(x=>`services/${x}`),...industries.map(x=>`industries/${slug(x)}`),...projects.map(x=>`projects/${slug(x)}`),...cityRoutes,...cityRoutes.flatMap(city=>services.map(service=>`${city}/${service}`))];
 for (const route of routes) {
   const dir = join(root, route);
   await mkdir(dir, { recursive: true });
