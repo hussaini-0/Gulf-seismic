@@ -59,9 +59,9 @@ def render_page():
     tree = html.parse(str(DIST / "about" / "index.html"))
     doc = tree.getroot()
     head = doc.find("head")
-    head.xpath("./title")[0].text = "Documents & Downloads | Gulf Seismic"
+    head.xpath("./title")[0].text = "Gulf Seismic Resources | Profiles, Reports & Certificates"
     for meta in head.xpath('./meta[@name="description"]'):
-        meta.set("content", "Download Gulf Seismic company profiles, UAE and Saudi road-marking brochures, project photo reports, and ISO certificates.")
+        meta.set("content", "Explore Gulf Seismic company profiles, UAE and Saudi road-marking brochures, project photo reports, and ISO certificates.")
     for link in head.xpath('./link[@rel="canonical"]'):
         link.set("href", "https://gulfseismic.com/documents")
     if not head.xpath('./link[@href="/documents.css"]'):
@@ -72,9 +72,9 @@ def render_page():
     add_fragment(main, """
       <section class="docs-hero">
         <div class="docs-wrap">
-          <nav class="docs-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Documents</span></nav>
-          <span class="docs-eyebrow">GULF SEISMIC RESOURCES</span>
-          <h1>Documents &amp; Downloads</h1>
+          <nav class="docs-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Resources</span></nav>
+          <span class="docs-eyebrow">RESOURCE LIBRARY</span>
+          <h1>Gulf Seismic Resources</h1>
           <p>Company profiles, road-marking literature, project photo reports and certificates — organized by business and purpose.</p>
         </div>
       </section>
@@ -118,11 +118,15 @@ def modify_pages():
         tree = html.parse(str(path))
         doc = tree.getroot()
         changed = False
+        for link in doc.xpath('//header//a[@href="/documents"] | //footer//a[@href="/documents"]'):
+            if link.text != "Resources":
+                link.text = "Resources"
+                changed = True
         for link in doc.xpath('//header//a[@href="/projects"]'):
             if link.getparent() is not None and not link.getparent().xpath('./a[@href="/documents"]'):
                 new = deepcopy(link)
                 new.set("href", "/documents")
-                new.text = "Documents"
+                new.text = "Resources"
                 link.addnext(new)
                 changed = True
         for link in doc.xpath('//footer//a[@href="/projects"]'):
@@ -134,7 +138,7 @@ def modify_pages():
             if item is not None and item.tag == "li" and not item.getparent().xpath('./li/a[@href="/documents"]'):
                 new = deepcopy(link)
                 new.set("href", "/documents")
-                new.text = "Documents"
+                new.text = "Resources"
                 new_item = etree.Element("li")
                 new_item.append(new)
                 item.addnext(new_item)
@@ -149,7 +153,7 @@ def modify_pages():
             changed = True
         if path == DIST / "about" / "index.html":
             main = doc.xpath("//main")[0]
-            add_fragment(main, '<section data-document-integration="profiles" class="docs-inline-section"><div class="docs-wrap"><span class="docs-kicker">CAPABILITY DOCUMENTS</span><h2>Explore our company documents</h2><p>Review Gulf Seismic’s corporate profile, road-marking literature and ISO certificates in one place.</p><a href="/documents">Browse documents &amp; downloads →</a></div></section>')
+            add_fragment(main, '<section data-document-integration="profiles" class="docs-inline-section"><div class="docs-wrap"><span class="docs-kicker">COMPANY RESOURCES</span><h2>Explore our company resources</h2><p>Review Gulf Seismic’s corporate profile, road-marking literature and ISO certificates in one place.</p><a href="/documents">Browse resources →</a></div></section>')
             if not doc.find("head").xpath('./link[@href="/documents.css"]'):
                 doc.find("head").append(etree.Element("link", rel="stylesheet", href="/documents.css"))
             changed = True
@@ -161,7 +165,7 @@ def modify_pages():
             changed = True
         if path == DIST / "saudi-arabia" / "index.html":
             main = doc.xpath("//main")[0]
-            add_fragment(main, '<section data-document-integration="saudi" class="docs-inline-section"><div class="docs-wrap"><span class="docs-kicker">SAUDI DOCUMENTS</span><h2>Saudi road-marking capability</h2><p>Download the Seismic Contracting Company LLC profile, flyer and brochure.</p><a href="/documents#saudi-road-marking">View Saudi documents →</a></div></section>')
+            add_fragment(main, '<section data-document-integration="saudi" class="docs-inline-section"><div class="docs-wrap"><span class="docs-kicker">SAUDI RESOURCES</span><h2>Saudi road-marking capability</h2><p>Download the Seismic Contracting Company LLC profile, flyer and brochure.</p><a href="/documents#saudi-road-marking">View Saudi resources →</a></div></section>')
             if not doc.find("head").xpath('./link[@href="/documents.css"]'):
                 doc.find("head").append(etree.Element("link", rel="stylesheet", href="/documents.css"))
             changed = True

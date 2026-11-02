@@ -53,7 +53,7 @@
     overlay.hidden = true;
     overlay.setAttribute('role','dialog');
     overlay.setAttribute('aria-label','Navigation menu');
-    overlay.innerHTML = `<div class="replica-menu-panel"><div class="replica-menu-top"><strong>Gulf Seismic</strong><button type="button" aria-label="Close menu">×</button></div><nav><a href="/services">All Services</a><a href="/projects">Projects</a><a href="/documents">Documents</a><a href="/industries">Industries</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Get a Quote</a></nav><h3>🇦🇪 UAE</h3><div class="replica-menu-cities">${linkList(uae,'uae')}</div><h3>🇸🇦 Saudi Arabia</h3><div class="replica-menu-cities">${linkList(saudi,'saudi-arabia')}</div></div>`;
+    overlay.innerHTML = `<div class="replica-menu-panel"><div class="replica-menu-top"><strong>Gulf Seismic</strong><button type="button" aria-label="Close menu">×</button></div><nav><a href="/services">All Services</a><a href="/projects">Projects</a><a href="/documents">Resources</a><a href="/industries">Industries</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Get a Quote</a></nav><h3>🇦🇪 UAE</h3><div class="replica-menu-cities">${linkList(uae,'uae')}</div><h3>🇸🇦 Saudi Arabia</h3><div class="replica-menu-cities">${linkList(saudi,'saudi-arabia')}</div></div>`;
     document.body.append(overlay);
     const close = () => { overlay.hidden = true; menuButton.setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
     menuButton.addEventListener('click', () => { overlay.hidden = false; menuButton.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; overlay.querySelector('button').focus(); });
