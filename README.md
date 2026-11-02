@@ -18,6 +18,8 @@ node mirror-site.mjs
 
 This requires network access. It updates captured public content and assets while retaining the local interaction files in `dist/replica.js` and `dist/replica.css`.
 
+After refreshing the mirror, run `integrate_documents.py` with the bundled Python runtime (including `lxml` and `pypdf`) to reapply the document library and navigation. The 22 approved client PDFs are retained under `dist/downloads/`, so the original Downloads folder is only needed for the initial copy. Review decisions and three withheld files are recorded in `DOCUMENT_AUDIT.md`.
+
 ## Form delivery
 
 The visual quote form and its validation are present. Submission currently prepares an email to `roadmarking@gulfseismic.com`; it does not send directly from the website. Connect a client-approved email or API endpoint before using the form as a production lead channel.

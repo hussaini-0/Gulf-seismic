@@ -1,0 +1,41 @@
+.docs-main { flex: 1; background: #f7f8f7; color: #172321; }
+.docs-wrap { width: min(100% - 2rem, 80rem); margin-inline: auto; }
+.docs-hero { position: relative; overflow: hidden; padding: 3.5rem 0 4rem; background: #0d2729; color: #fff; border-top: 4px solid #d7a041; }
+.docs-hero::before { content: ""; position: absolute; inset: 0; opacity: .13; background-image: linear-gradient(90deg, transparent 95%, #fff 95%), linear-gradient(transparent 95%, #fff 95%); background-size: 48px 48px; pointer-events: none; }
+.docs-hero .docs-wrap { position: relative; }
+.docs-breadcrumb { display: flex; align-items: center; gap: .65rem; margin-bottom: 2.5rem; color: #b9c7c6; font-size: .875rem; }
+.docs-breadcrumb a { color: inherit; text-decoration: none; }
+.docs-breadcrumb a:hover { color: #fff; }
+.docs-eyebrow, .docs-kicker { display: block; color: #c99233; font-size: .75rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.docs-hero h1 { margin: .85rem 0 1rem; max-width: 48rem; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.08; font-weight: 800; letter-spacing: -.035em; }
+.docs-hero p { max-width: 43rem; color: #ced9d7; font-size: 1.125rem; line-height: 1.65; }
+.docs-intro { border-bottom: 1px solid #dfe4e2; background: #fff; }
+.docs-intro .docs-wrap { padding-block: 1.4rem; }
+.docs-intro p { max-width: 72rem; margin: 0; color: #4a5d59; font-size: .95rem; line-height: 1.7; }
+.docs-section { padding: 4.5rem 0; border-bottom: 1px solid #e2e7e4; }
+.docs-section:nth-of-type(even) { background: #fff; }
+.docs-heading { margin-bottom: 1.8rem; }
+.docs-heading h2 { margin: .45rem 0 .35rem; font-size: clamp(1.65rem, 3vw, 2.2rem); line-height: 1.2; font-weight: 750; letter-spacing: -.025em; }
+.docs-heading p { margin: 0; max-width: 50rem; color: #61706d; line-height: 1.6; }
+.docs-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.docs-card { display: flex; flex-direction: column; align-items: flex-start; min-height: 15rem; padding: 1.45rem; border: 1px solid #dce3df; border-radius: .85rem; background: #fff; box-shadow: 0 3px 15px rgba(12, 36, 31, .035); transition: border-color .2s, transform .2s, box-shadow .2s; }
+.docs-card:hover { transform: translateY(-2px); border-color: #c99233; box-shadow: 0 10px 28px rgba(12, 36, 31, .08); }
+.docs-file-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; margin-bottom: 1rem; border-radius: .5rem; background: #f8eacd; color: #855c15; font-size: .7rem; font-weight: 800; letter-spacing: .04em; }
+.docs-card-body { flex: 1; }
+.docs-card h3 { margin: 0 0 .45rem; color: #192c2a; font-size: 1.04rem; line-height: 1.35; font-weight: 700; }
+.docs-card p { margin: 0 0 .8rem; color: #5c6b68; font-size: .9rem; line-height: 1.55; }
+.docs-meta { display: block; margin-bottom: 1rem; color: #7d8985; font-size: .78rem; }
+.docs-card a { color: #a36f16; font-size: .9rem; font-weight: 700; text-decoration: none; }
+.docs-card a:hover, .docs-card a:focus-visible { text-decoration: underline; }
+.docs-cta { padding: 4rem 0; background: #0d2729; color: white; }
+.docs-cta h2 { margin: 0 0 .6rem; font-size: 2rem; font-weight: 750; }
+.docs-cta p { margin: 0 0 1.25rem; color: #cbd8d5; }
+.docs-cta a { display: inline-block; padding: .8rem 1.15rem; border-radius: .45rem; background: #d19a37; color: #122324; font-weight: 750; text-decoration: none; }
+.docs-cta a:hover { background: #e7b34e; }
+.docs-inline-section { padding: 3.5rem 0; border-top: 1px solid #e2e7e4; background: #f5f7f6; }
+.docs-inline-section h2 { margin: .5rem 0; color: #152b29; font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 750; }
+.docs-inline-section p { margin: 0 0 1rem; max-width: 45rem; color: #586a65; line-height: 1.6; }
+.docs-inline-section a { color: #a46f16; font-weight: 700; text-decoration: none; }
+.docs-inline-section a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .docs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .docs-hero { padding: 2.5rem 0 3rem; } .docs-breadcrumb { margin-bottom: 1.8rem; } .docs-grid { grid-template-columns: 1fr; } .docs-section { padding: 3rem 0; } .docs-card { min-height: auto; } }
