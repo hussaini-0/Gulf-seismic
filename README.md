@@ -10,6 +10,10 @@ python -m http.server 4173 --bind 127.0.0.1 --directory dist
 
 Open `http://127.0.0.1:4173`.
 
+## Deploy on Vercel
+
+Import this repository in Vercel with the repository root as the Root Directory. The tracked `vercel.json` selects the static `dist/` directory as the Output Directory; no build command is required. Deploy the `main` branch to production. If an existing `*.vercel.app` address still shows a Vercel `NOT_FOUND` page after a successful deployment, check that the address is assigned to this Vercel project and its latest production deployment.
+
 ## Refresh public content
 
 ```powershell
